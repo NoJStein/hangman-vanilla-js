@@ -1,0 +1,6 @@
+
+body { color:white; background-color:#232323; }
+
+.guess-box { background-color:lime; display:flex; gap:20px; padding:20px; }
+
+.letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; }
