@@ -55,6 +55,25 @@ function clearHangman(guessBox) {
         guessBox.removeChild(guessBox.firstChild);
     }
 }
+
+// This function takes our random word and splits it into individual letters
+// Each letter is used as an argument in a function that creates a new div, adds the correct class,
+// adds the letter as an attribute to the new div, then appends the div to the DOM
+function startHangman(myWord) {
+        const guessBox = document.querySelector('.guess-box');
+        if (guessBox === undefined) { return; }
+
+        // Clears the previous word
+        clearHangman(guessBox);
+
+        myWord.split('').forEach(letter => {
+            const newDOMNode = document.createElement('div');
+            newDOMNode.classList.add('letter-box');
+            newDOMNode.dataset.letter = letter;
+            guessBox.appendChild(newDOMNode);
+        })
+
+}
 // setTimeout creates a timer object
 let timeout = setTimeout(() => {
     console.log('im finally here!')
