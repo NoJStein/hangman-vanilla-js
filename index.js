@@ -42,6 +42,12 @@ function chooseWord(difficulty, wordBank) {
 }
 
 chooseWord(Difficulties.Easy, wordBank);
+// This function is passed an HTML div element that was clicked by the user
+// This element stores a difficulty option that is extracted and then returned
+function chooseDifficulty(div) {
+    let myDifficulty = div.getAttribute('data-dif'); 
+    return myDifficulty;  
+}
 
 // setTimeout creates a timer object
 let timeout = setTimeout(() => {
