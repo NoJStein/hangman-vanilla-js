@@ -3,7 +3,7 @@
 
 - Should start with a row of buttons on top for the difficulties
 - Once a difficulty is selected, a random word is chosen
-- The player can input letter
+- The player can input a letter
 - If the letter is in the word, reveal that letter
 - If it isn't, add to the representation of a hangman
 - If they lose, show a lose message
@@ -22,10 +22,12 @@
 - If you lose: 💀
 - If the hangman is still alive and the player hasn't made a move for 15 seconds, have him fall asleep or look at them funny: 😴🙄😤
 
-
-
 */
 
+// I'm currently not using this, I wasn't sure how to have the function chooseDifficulty return
+// Difficulties.Easy or Difficulties.Hard (for example).
+// I could return it as a string which wouldn't have worked for when I used the return value
+// as an argument for chooseWord
 const Difficulties = {
     Easy: 'easy',
     Normal: 'normal',
@@ -42,13 +44,14 @@ const state = {
 const wordBank = JSON.parse(data);
 console.log(wordBank);
 
+// Takes the difficulty to find the correct sub-bank of words within wordBank
+// A random index is calculated and wordList at that index is returned
 function chooseWord(difficulty, wordBank) {
     let wordList = wordBank[difficulty];
     let index = Math.floor(Math.random() * wordList.length);
     return wordList[index];
 }
 
-chooseWord(Difficulties.Easy, wordBank);
 // This function is passed an HTML div element that was clicked by the user
 // This element stores a difficulty option that is extracted and then returned
 function chooseDifficulty(div) {
@@ -115,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const guessBox = document.querySelector('.guess-box');
     if (guessBox === undefined) { return; }
 
-    // const myWord = "HELLO";
+    //const myWord = "HELLO";
     // myWord.split('').forEach(letter => {
     //     const newDOMNode = document.createElement('div');
     //     newDOMNode.classList.add('letter-box');
@@ -128,4 +131,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //hangman : [], // A representation of the hangman
 
-
+document.addEventListener("DOMContentLoaded", init);        //Checks if the DOM is fully loaded before executing init
