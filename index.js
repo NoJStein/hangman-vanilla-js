@@ -32,6 +32,13 @@ const Difficulties = {
     Hard: 'hard'
 }
 
+const state = {
+    target : '',
+    guessCount : 0,
+    remainingLetters : '', // A list of available letters to guess
+    difficulty : 0, // Effects the length of words to guess
+};
+
 const wordBank = JSON.parse(data);
 console.log(wordBank);
 
@@ -101,16 +108,7 @@ let timeout = setTimeout(() => {
 }, 5000);
 clearTimeout(timeout);
 
-const state = {
-    target : '',
-    guessCount : 0,
 
-    remainingLetters : '', // A list of available letters to guess
-    wordBank : [],
-    difficulty : 0, // Effects the length of words to guess
-    
-    
-};
 
 // An example of adding a dom node
 document.addEventListener("DOMContentLoaded", () => {
