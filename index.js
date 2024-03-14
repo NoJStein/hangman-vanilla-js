@@ -28,8 +28,8 @@
 
 const Difficulties = {
     Easy: 'easy',
-    Medium: 'medium',
-    Difficult: 'difficult'
+    Normal: 'normal',
+    Hard: 'hard'
 }
 
 const wordBank = JSON.parse(data);
