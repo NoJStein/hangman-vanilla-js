@@ -4,3 +4,15 @@ body { color:white; background-color:#232323; }
 .guess-box { background-color:lime; display:flex; gap:20px; padding:20px; }
 
 .letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; }
+
+.difficulty-selector { display:flex; gap:30px; padding:30px; justify-content:center; color:black}
+
+.difficulty-option {width:90px; aspect-ratio:2/1; border:2px solid black; font-size:x-large; display:flex; justify-content: center; align-items: center;}
+
+.difficulty--easy {background-color: green;}
+
+.difficulty--medium {background-color: yellow;}
+
+.difficulty--hard {background-color: red;}
+
+.start-message {font-size:xx-large; display:flex; justify-content:center;}
