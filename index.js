@@ -49,6 +49,12 @@ function chooseDifficulty(div) {
     return myDifficulty;  
 }
 
+function clearHangman(guessBox) {
+    // This clears the previous word from the guessBox element, child by child
+    while (guessBox.firstChild) {
+        guessBox.removeChild(guessBox.firstChild);
+    }
+}
 // setTimeout creates a timer object
 let timeout = setTimeout(() => {
     console.log('im finally here!')
