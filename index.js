@@ -74,6 +74,27 @@ function startHangman(myWord) {
         })
 
 }
+
+function init() {
+    const difficulties = document.querySelectorAll('.difficulty-option');
+    difficulties.forEach(div => {
+        div.addEventListener('click', () => {         
+            state.difficulty = chooseDifficulty(div);
+            state.target = chooseWord(state.difficulty, wordBank);
+            console.log(state.target);
+            startHangman(state.target);
+        })
+    })   
+}
+
+
+
+
+
+
+
+//let myWord = chooseWord(myDifficulty, wordBank);
+
 // setTimeout creates a timer object
 let timeout = setTimeout(() => {
     console.log('im finally here!')
