@@ -141,6 +141,12 @@ function hideDifficulty() {
     })
 }
 
+// Called after the user selects a difficulty
+function gameStartText() {
+    const startMessage = document.querySelector('.start-message');
+    startMessage.textContent = "Guess the word!";
+}
+
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
