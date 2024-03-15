@@ -112,6 +112,16 @@ function loadLetters() {
         row2.appendChild(newDOMNode);
     })
 }
+
+// Once the user selects a difficulty, the "invisible-element" class is removed
+// This makes the letters visible
+function displayLetters() {
+    const letters = document.querySelectorAll('.letter');
+    letters.forEach(button => {
+        button.classList.remove('invisible-element');
+    })
+}
+
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
