@@ -133,6 +133,14 @@ function clearLetters(row1, row2) {
     }
 }
 
+// Called after the user selects a difficulty
+function hideDifficulty() {
+    const difficulties = document.querySelectorAll('.difficulty');
+    difficulties.forEach(div => {
+        div.classList.add('invisible-element');
+    })
+}
+
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
