@@ -41,7 +41,8 @@ const state = {
     difficulty : 0, // Effects the length of words to guess
 };
 
-const wordBank = JSON.parse(data);
+
+const wordBank = JSON.parse(data.toLowerCase());
 console.log(wordBank);
 
 // Takes the difficulty to find the correct sub-bank of words within wordBank
