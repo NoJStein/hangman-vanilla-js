@@ -122,6 +122,17 @@ function displayLetters() {
     })
 }
 
+// Used for clearing out guessed letters when restarting or starting hangman
+function clearLetters(row1, row2) {
+    while(row1.firstChild) {
+        row1.removeChild(row1.firstChild);
+    }
+
+    while(row2.firstChild) {
+        row2.removeChild(row2.firstChild);
+    }
+}
+
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
