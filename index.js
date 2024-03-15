@@ -158,16 +158,37 @@ function checkLetter(myLetter) {
     return false;
 }
 
+// This is my main function it links everything together, so hopefully it doesn't get too large
+// Two variables hold two categories of HTML elements "difficulty" and "letter"
+// There are two click event listeners
+// The first one prepares hangman with the selected difficulty with a random word
+// The second one gets the value of a letter button pressed and checks if it is a correct letter
 function init() {
-    const difficulties = document.querySelectorAll('.difficulty-option');
+    const difficulties = document.querySelectorAll('.difficulty');
+    loadLetters();
+    const letterButtons = document.querySelectorAll('.letter');
+
     difficulties.forEach(div => {
         div.addEventListener('click', () => {         
             state.difficulty = chooseDifficulty(div);
             state.target = chooseWord(state.difficulty, wordBank);
             console.log(state.target);
             startHangman(state.target);
+            displayLetters();
+            hideDifficulty();
+            gameStartText();
+  
         })
     })   
+
+    letterButtons.forEach(button => {
+        button.addEventListener('click', () =>{
+            console.log(button.getAttribute('data-value'));     //Test
+            button.disabled = true;
+            let myLetter = button.getAttribute('data-value');
+            checkLetter(myLetter);
+        })
+    })
 }
 
 
