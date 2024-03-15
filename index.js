@@ -37,7 +37,7 @@ const Difficulties = {
 const state = {
     target : '',
     guessCount : 0,
-    remainingLetters : '', // A list of available letters to guess
+    remainingLetters : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'], // A list of available letters to guess
     difficulty : 0, // Effects the length of words to guess
 };
 
@@ -85,6 +85,33 @@ function startHangman(myWord) {
 
 }
 
+// This function finds and assigns both letter-selector--row elements to variables
+// It then runs clearLetters() on both rows to clear them of their contents
+// Then both rows are populated with the contents of state.remainingLetters
+// Each new element is assigned to the class "letter" and "invisible-element"
+// The elements need to be loaded in before they can be seen which is why they are given "invisible-element"
+function loadLetters() {
+    const letterRows = document.querySelectorAll('.letter-selector--row');
+    let row1 = letterRows[0];
+    let row2 = letterRows[1];
+    
+    clearLetters(row1, row2);
+    state.remainingLetters.slice(0, 13).forEach(letter => {
+        const newDOMNode = document.createElement('button');
+        newDOMNode.classList.add('letter', 'invisible-element');
+        newDOMNode.dataset.value = letter;
+        newDOMNode.textContent = letter.toUpperCase();
+        row1.appendChild(newDOMNode);
+    })
+
+    state.remainingLetters.slice(13, 26).forEach(letter => {
+        const newDOMNode = document.createElement('button');
+        newDOMNode.classList.add('letter', 'invisible-element');
+        newDOMNode.dataset.value = letter;
+        newDOMNode.textContent = letter.toUpperCase();
+        row2.appendChild(newDOMNode);
+    })
+}
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
