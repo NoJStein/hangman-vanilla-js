@@ -147,6 +147,17 @@ function gameStartText() {
     startMessage.textContent = "Guess the word!";
 }
 
+// Called after the user clicks on a letter
+// Checks if a guessed letter is contained in state.target
+function checkLetter(myLetter) {
+    if (state.target.includes(myLetter)) {
+        console.log("Correct Letter");      //Test
+        return true;
+    } 
+    console.log("Incorrect Letter");    //Test
+    return false;
+}
+
 function init() {
     const difficulties = document.querySelectorAll('.difficulty-option');
     difficulties.forEach(div => {
