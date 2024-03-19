@@ -155,6 +155,28 @@ function gameStartText() {
 function checkLetter(myLetter) {
     return state.target.includes(myLetter) ? true : false;
 }
+
+// Defines indexArr which holds the indexes of all matches between myLetter and state.target
+// Loops through state.target, appending all matching indexes to indexArr
+// We pop the correct indexes from indexArr, using them as a means of navigating through the children of guessBox
+// Each child will have its text content changed to myLetter
+function updateGuessBoard(myLetter) {
+    let indexArr = [];
+    const guessBox = document.querySelector('.guess-box');
+
+    for (i in state.target) {
+        if (state.target[i] === myLetter) {
+            indexArr.push(i);
+        }
+    }
+
+    //console.log("Adding ", indexArr.length, " to state.CorrectGuessCount");     //Test
+    state.CorrectGuessCount += indexArr.length;
+
+    while (indexArr.length !== 0) {
+        guessBox.children[indexArr.pop()].textContent = myLetter.toUpperCase();
+    }
+}
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
