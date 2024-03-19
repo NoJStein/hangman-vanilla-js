@@ -1,9 +1,9 @@
 
-body { color:white; background-color:#232323; }
+body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:x-large}
 
 .guess-box { /*background-color:lime;*/ display:flex; gap:20px; padding:20px; justify-content:center; }
 
-.letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; }
+.letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; align-items:center; justify-content:center; display:flex; color:black;}
 
 .difficulty-selector { display:flex; gap:30px; padding:30px; justify-content:center; color:black }
 
@@ -15,7 +15,7 @@ body { color:white; background-color:#232323; }
 
 .difficulty--hard { background-color: red; }
 
-.start-message { font-size:xx-large; display:flex; justify-content:center; font-family:Verdana, Geneva, Tahoma, sans-serif; }
+.text-message { font-size:xx-large; display:flex; justify-content:center;  }
 
 .letter-selector { padding:20px; }
 
@@ -23,10 +23,18 @@ body { color:white; background-color:#232323; }
 
 .letter { width:45px; aspect-ratio:1/1; border:2px solid black; font-size:x-large; }
 
-.invisible-element { visibility:hidden; }.hangman { display:flex; flex-direction:column; align-items:center; font-size: 40px; }
+.invisible-element { visibility:hidden; padding:0px; gap:0px}
+
+.letter-box__correct { background-color:gold; }
+
+.hangman { display:flex; flex-direction:column; align-items:center; font-size: 40px; }
 
 .hangman__torso { display:flex; }
 
 .hangman__legs { display:flex; }
 
 .hangman__part { margin:0px; }
+
+.red-background { background-color:red; }
+
+.play-again { display:flex; flex-direction:column; align-items:center; width:90px; aspect-ratio:2/1; border:2px solid black; font-size:x-large;}

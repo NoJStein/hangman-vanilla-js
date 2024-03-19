@@ -1,18 +1,18 @@
 
 /*
 
-- Should start with a row of buttons on top for the difficulties
-- Once a difficulty is selected, a random word is chosen
-- The player can input a letter
-- If the letter is in the word, reveal that letter
-- If it isn't, add to the representation of a hangman
-- If they lose, show a lose message
-- If they win, same thing, say they won
+- Should start with a row of buttons on top for the difficulties                DONE
+- Once a difficulty is selected, a random word is chosen                        DONE     
+- The player can input a letter                                                 DONE
+- If the letter is in the word, reveal that letter                              DONE
+- If it isn't, add to the representation of a hangman                           DONE
+- If they lose, show a lose message                                             DONE
+- If they win, same thing, say they won                                         DONE
 - When the game is over, have a play again message and show the buttons again
 
-- Should have the remaining and used letters visible in a grid
-- If the letter has been guessed and is not in the word, grey it out
-- If the letter has been guessed and is in the word, color it green, yellow, whatever, make it stand out
+- Should have the remaining and used letters visible in a grid                                              DONE
+- If the letter has been guessed and is not in the word, grey it out                                        DONE
+- If the letter has been guessed and is in the word, color it green, yellow, whatever, make it stand out    DONE
 
 - The hangman should have an emoji for his head
 - It should react to what happens in the game
@@ -45,7 +45,6 @@ const state = {
 
 
 const wordBank = JSON.parse(data.toLowerCase());
-console.log(wordBank);
 
 // Takes the difficulty to find the correct sub-bank of words within wordBank
 // A random index is calculated and wordList at that index is returned
@@ -138,6 +137,8 @@ function clearLetters(row1, row2) {
 
 // Called after the user selects a difficulty
 function hideDifficulty() {
+    const difficultySelector = document.querySelector('.difficulty-selector');
+    difficultySelector.classList.add('invisible-element');
     const difficulties = document.querySelectorAll('.difficulty');
     difficulties.forEach(div => {
         div.classList.add('invisible-element');
@@ -146,7 +147,7 @@ function hideDifficulty() {
 
 // Called after the user selects a difficulty
 function gameStartText() {
-    const startMessage = document.querySelector('.start-message');
+    const startMessage = document.querySelector('.text-message');
     startMessage.textContent = "Guess the word!";
 }
 
@@ -257,12 +258,13 @@ function init() {
     const difficulties = document.querySelectorAll('.difficulty');
     loadLetters();
     const letterButtons = document.querySelectorAll('.letter');
+    timeout;
 
     difficulties.forEach(div => {
         div.addEventListener('click', () => {         
             state.difficulty = chooseDifficulty(div);
             state.target = chooseWord(state.difficulty, wordBank);
-            console.log(state.target);
+            console.log(state.target);      //Test
             startHangman(state.target);
             displayLetters();
             hideDifficulty();
