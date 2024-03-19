@@ -36,7 +36,9 @@ const Difficulties = {
 
 const state = {
     target : '',
-    guessCount : 0,
+    CorrectGuessCount : 0,
+    wrongGuessCount: 0,
+    // I don't think I need to use this anymore because I'm just disabling the letter buttons on the DOM to keep track of my remaining letters
     remainingLetters : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'], // A list of available letters to guess
     difficulty : 0, // Effects the length of words to guess
 };
