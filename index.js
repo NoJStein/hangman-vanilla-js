@@ -220,6 +220,10 @@ function gameOverFillBoard() {
         }
     }
 }
+
+function winCheck() {
+    return (state.target.length === state.CorrectGuessCount) ? true : false;
+ }
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
