@@ -273,10 +273,20 @@ function init() {
 
     letterButtons.forEach(button => {
         button.addEventListener('click', () =>{
-            console.log(button.getAttribute('data-value'));     //Test
             button.disabled = true;
             let myLetter = button.getAttribute('data-value');
-            checkLetter(myLetter);
+            if(checkLetter(myLetter)) {
+                button.classList.add('letter-box__correct');
+                updateGuessBoard(myLetter);
+            } else {
+                state.wrongGuessCount++;
+                drawHangman();
+            }
+
+            if (winCheck()) {
+                console.log("VICTORY");     //Test
+                victory();
+            }
         })
     })
 }
