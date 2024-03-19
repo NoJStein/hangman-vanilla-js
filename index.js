@@ -153,12 +153,8 @@ function gameStartText() {
 // Called after the user clicks on a letter
 // Checks if a guessed letter is contained in state.target
 function checkLetter(myLetter) {
-    if (state.target.includes(myLetter)) {
-        console.log("Correct Letter");      //Test
-        return true;
-    } 
-    console.log("Incorrect Letter");    //Test
-    return false;
+    return state.target.includes(myLetter) ? true : false;
+}
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
