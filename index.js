@@ -224,6 +224,28 @@ function gameOverFillBoard() {
 function winCheck() {
     return (state.target.length === state.CorrectGuessCount) ? true : false;
  }
+
+ // Disables all letter buttons
+ // Changes top text to "VICTORY!"
+ // Changes hangman head to a party emoji
+ // Calls playAgain
+function victory() {
+    const letterButtons = document.querySelectorAll('.letter');
+    letterButtons.forEach(button => {
+        button.disabled = true;
+    })
+
+    const topMessage = document.querySelector('.text-message');
+    topMessage.textContent = "VICTORY!";
+
+    const hangmanHead = document.querySelector('.hangman__head');
+    hangmanHead.textContent = "🥳";
+
+    playAgain()
+}
+
+function playAgain() {
+    // Have a button here that calls init when pressed.
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
