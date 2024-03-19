@@ -187,6 +187,27 @@ function drawHangman() {
     let hangman = document.querySelectorAll('.hangman__part');
     hangman[state.wrongGuessCount - 1].classList.remove('invisible-element');
 }
+
+// Disable all letter buttons
+// Change the top message to "GAME OVER"
+// Change the hangman's head to a skull
+// run gameOverFillBoard
+// calls playAgain
+function gameOver() {
+    const letterButtons = document.querySelectorAll('.letter');
+    letterButtons.forEach(button => {
+        button.disabled = true;
+    })
+
+    const topMessage = document.querySelector('.text-message');
+    topMessage.textContent = "GAME OVER";
+
+    const hangmanHead = document.querySelector('.hangman__head');
+    hangmanHead.textContent = "💀";
+
+    gameOverFillBoard();
+    playAgain();
+}
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
