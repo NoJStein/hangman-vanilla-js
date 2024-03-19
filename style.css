@@ -23,4 +23,10 @@ body { color:white; background-color:#232323; }
 
 .letter { width:45px; aspect-ratio:1/1; border:2px solid black; font-size:x-large; }
 
-.invisible-element { visibility:hidden; }
+.invisible-element { visibility:hidden; }.hangman { display:flex; flex-direction:column; align-items:center; font-size: 40px; }
+
+.hangman__torso { display:flex; }
+
+.hangman__legs { display:flex; }
+
+.hangman__part { margin:0px; }
