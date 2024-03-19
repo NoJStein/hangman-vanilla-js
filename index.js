@@ -177,6 +177,16 @@ function updateGuessBoard(myLetter) {
         guessBox.children[indexArr.pop()].textContent = myLetter.toUpperCase();
     }
 }
+
+// If you are out of guesses, then run gameOver
+// Else, draw the next part of the hangman
+function drawHangman() {
+    if (state.wrongGuessCount > 5) {
+        gameOver();
+    }
+    let hangman = document.querySelectorAll('.hangman__part');
+    hangman[state.wrongGuessCount - 1].classList.remove('invisible-element');
+}
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
