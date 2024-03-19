@@ -208,6 +208,18 @@ function gameOver() {
     gameOverFillBoard();
     playAgain();
 }
+
+// Fills in all unguessed spaces with the correct letter and highlights them red
+function gameOverFillBoard() {
+    const guessBox = document.querySelector('.guess-box');
+
+    for (i in state.target) {
+        if (state.target[i].toUpperCase() !== guessBox.children[i].textContent) {
+            guessBox.children[i].textContent = state.target[i].toUpperCase();
+            guessBox.children[i].classList.add('red-background');
+        }
+    }
+}
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
