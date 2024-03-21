@@ -154,7 +154,7 @@ function gameStartText() {
 // Called after the user clicks on a letter
 // Checks if a guessed letter is contained in state.target
 function checkLetter(myLetter) {
-    return state.target.includes(myLetter) ? true : false;
+    return state.target.includes(myLetter);
 }
 
 // Defines indexArr which holds the indexes of all matches between myLetter and state.target
@@ -229,8 +229,8 @@ function gameOverFillBoard() {
 }
 
 function winCheck() {
-    return (state.target.length === state.CorrectGuessCount) ? true : false;
- }
+    return (state.target.length === state.CorrectGuessCount);
+}
 
  // Disables all letter buttons
  // Changes top text to "VICTORY!"
