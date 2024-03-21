@@ -36,7 +36,7 @@ const Difficulties = {
 
 const state = {
     target : '',
-    CorrectGuessCount : 0,
+    correctGuessCount : 0,
     wrongGuessCount: 0,
     // I don't think I need to use this anymore because I'm just disabling the letter buttons on the DOM to keep track of my remaining letters
     remainingLetters : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'], // A list of available letters to guess
@@ -171,8 +171,8 @@ function updateGuessBoard(myLetter) {
         }
     }
 
-    //console.log("Adding ", indexArr.length, " to state.CorrectGuessCount");     //Test
-    state.CorrectGuessCount += indexArr.length;
+    //console.log("Adding ", indexArr.length, " to state.correctGuessCount");     //Test
+    state.correctGuessCount += indexArr.length;
 
     while (indexArr.length !== 0) {
         guessBox.children[indexArr.pop()].textContent = myLetter.toUpperCase();
@@ -229,7 +229,7 @@ function gameOverFillBoard() {
 }
 
 function winCheck() {
-    return (state.target.length === state.CorrectGuessCount);
+    return (state.target.length === state.correctGuessCount);
 }
 
  // Disables all letter buttons
