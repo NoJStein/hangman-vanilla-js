@@ -90,8 +90,8 @@ function startHangman(myWord) {
 // This function finds and assigns both letter-selector--row elements to variables
 // It then runs clearLetters() on both rows to clear them of their contents
 // Then both rows are populated with the contents of state.remainingLetters
-// Each new element is assigned to the class "letter" and "invisible-element"
-// The elements need to be loaded in before they can be seen which is why they are given "invisible-element"
+// Each new element is assigned to the class "letter" and "hidden"
+// The elements need to be loaded in before they can be seen which is why they are given "hidden"
 function loadLetters() {
     const letterRows = document.querySelectorAll('.letter-selector--row');
     let row1 = letterRows[0];
@@ -100,7 +100,7 @@ function loadLetters() {
     clearLetters(row1, row2);
     state.remainingLetters.slice(0, 13).forEach(letter => {
         const newDOMNode = document.createElement('button');
-        newDOMNode.classList.add('letter', 'invisible-element');
+        newDOMNode.classList.add('letter', 'hidden');
         newDOMNode.dataset.value = letter;
         newDOMNode.textContent = letter.toUpperCase();
         row1.appendChild(newDOMNode);
@@ -113,14 +113,16 @@ function loadLetters() {
         newDOMNode.textContent = letter.toUpperCase();
         row2.appendChild(newDOMNode);
     })
+    //     const newDOMNode = document.createElement('button');
+    //     newDOMNode.classList.add('letter', 'hidden');
 }
 
-// Once the user selects a difficulty, the "invisible-element" class is removed
+// Once the user selects a difficulty, the "hidden" class is removed
 // This makes the letters visible
 function displayLetters() {
     const letters = document.querySelectorAll('.letter');
     letters.forEach(button => {
-        button.classList.remove('invisible-element');
+        button.classList.remove('hidden');
     })
 }
 
@@ -132,16 +134,16 @@ function clearLetters(row1, row2) {
 
     while(row2.firstChild) {
         row2.removeChild(row2.firstChild);
-    }
+    // while(row2.firstChild) {
 }
 
 // Called after the user selects a difficulty
 function hideDifficulty() {
     const difficultySelector = document.querySelector('.difficulty-selector');
-    difficultySelector.classList.add('invisible-element');
+    difficultySelector.classList.add('hidden');
     const difficulties = document.querySelectorAll('.difficulty');
     difficulties.forEach(div => {
-        div.classList.add('invisible-element');
+        div.classList.add('hidden');
     })
 }
 
@@ -186,7 +188,7 @@ function drawHangman() {
         gameOver();
     }
     let hangman = document.querySelectorAll('.hangman__part');
-    hangman[state.wrongGuessCount - 1].classList.remove('invisible-element');
+    hangman[state.wrongGuessCount - 1].classList.remove('hidden');
 }
 
 // Disable all letter buttons

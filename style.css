@@ -23,7 +23,7 @@ body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahom
 
 .letter { width:45px; aspect-ratio:1/1; border:2px solid black; font-size:x-large; }
 
-.invisible-element { visibility:hidden; padding:0px; gap:0px}
+.hidden { visibility:hidden; padding:0px; gap:0px}
 
 .letter-box__correct { background-color:gold; }
 
