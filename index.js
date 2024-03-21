@@ -93,28 +93,17 @@ function startHangman(myWord) {
 // Each new element is assigned to the class "letter" and "hidden"
 // The elements need to be loaded in before they can be seen which is why they are given "hidden"
 function loadLetters() {
-    const letterRows = document.querySelectorAll('.letter-selector--row');
-    let row1 = letterRows[0];
-    let row2 = letterRows[1];
+    const letterSelector = document.querySelector('.letter-selector');
     
-    clearLetters(row1, row2);
-    state.remainingLetters.slice(0, 13).forEach(letter => {
+    clearLetters(letterSelector);
+    state.remainingLetters.slice(0, 26).forEach(letter => {
         const newDOMNode = document.createElement('button');
         newDOMNode.classList.add('letter', 'hidden');
         newDOMNode.dataset.value = letter;
         newDOMNode.textContent = letter.toUpperCase();
-        row1.appendChild(newDOMNode);
+        letterSelector.appendChild(newDOMNode);
     })
 
-    state.remainingLetters.slice(13, 26).forEach(letter => {
-        const newDOMNode = document.createElement('button');
-        newDOMNode.classList.add('letter', 'invisible-element');
-        newDOMNode.dataset.value = letter;
-        newDOMNode.textContent = letter.toUpperCase();
-        row2.appendChild(newDOMNode);
-    })
-    //     const newDOMNode = document.createElement('button');
-    //     newDOMNode.classList.add('letter', 'hidden');
 }
 
 // Once the user selects a difficulty, the "hidden" class is removed
@@ -127,14 +116,11 @@ function displayLetters() {
 }
 
 // Used for clearing out guessed letters when restarting or starting hangman
-function clearLetters(row1, row2) {
-    while(row1.firstChild) {
-        row1.removeChild(row1.firstChild);
+function clearLetters(letterSelector) {
+    while(letterSelector.firstChild) {
+        letterSelector.removeChild(letterSelector.firstChild);
     }
 
-    while(row2.firstChild) {
-        row2.removeChild(row2.firstChild);
-    // while(row2.firstChild) {
 }
 
 // Called after the user selects a difficulty

@@ -17,7 +17,7 @@ body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahom
 
 .text-message { font-size:xx-large; display:flex; justify-content:center;  }
 
-.letter-selector { padding:20px; }
+.letter-selector { padding:20px; display:flex; justify-content:center; flex-wrap:wrap; margin-left:25%; margin-right:25%; }
 
 .letter-selector--row { display:flex; justify-content:center; }
 
