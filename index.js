@@ -200,14 +200,20 @@ function gameOver() {
         button.disabled = true;
     })
 
-    const topMessage = document.querySelector('.text-message');
-    topMessage.textContent = "GAME OVER";
-
-    const hangmanHead = document.querySelector('.hangman__head');
-    hangmanHead.textContent = "💀";
-
+    setMessage("GAME OVER");
+    setHead("💀");
     gameOverFillBoard();
     playAgain();
+}
+
+function setMessage(message) {
+    const topMessage = document.querySelector('.text-message');
+    topMessage.textContent = message;
+}
+
+function setHead(newHead) {
+    const hangmanHead = document.querySelector('.hangman__head');
+    hangmanHead.textContent = newHead;
 }
 
 // Fills in all unguessed spaces with the correct letter and highlights them red
@@ -236,12 +242,8 @@ function victory() {
         button.disabled = true;
     })
 
-    const topMessage = document.querySelector('.text-message');
-    topMessage.textContent = "VICTORY!";
-
-    const hangmanHead = document.querySelector('.hangman__head');
-    hangmanHead.textContent = "🥳";
-
+    setMessage("VICTORY");
+    setHead("🥳");
     playAgain()
 }
 
