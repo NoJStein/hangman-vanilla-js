@@ -237,6 +237,46 @@ function victory() {
 
 function playAgain() {
     // Have a button here that calls init when pressed.
+    const playAgainButton = document.querySelector('.play-again__button');
+    playAgainButton.classList.remove('hidden');
+
+        playAgainButton.addEventListener('click', () => {
+            console.log("button pressed");      //Test
+            playAgainButton.classList.add('hidden');
+            gameReset();
+            init();
+        })
+
+
+}
+
+function gameReset() {
+    showDifficulty();
+    const guessBox = document.querySelector('.guess-box');
+    clearGuessBox(guessBox);
+
+    state.correctGuessCount = 0;
+    state.wrongGuessCount = 0;
+
+    resetHangman();
+}
+
+function showDifficulty() {
+    const difficultySelector = document.querySelector('.difficulty-selector');
+    difficultySelector.classList.remove('hidden');
+    const difficulties = document.querySelectorAll('.difficulty');
+    difficulties.forEach(button => {
+        button.classList.remove('hidden');
+    })
+}
+
+function resetHangman () {
+    const hangman = document.querySelectorAll('.hangman__part');
+    hangman.forEach(part => {
+        part.classList.add('hidden');
+    })
+
+    setHead("😟");
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large

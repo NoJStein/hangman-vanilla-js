@@ -1,5 +1,5 @@
 
-body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:x-large}
+body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:x-large; display:flex; flex-direction:column;}
 
 .guess-box { /*background-color:lime;*/ display:flex; gap:20px; padding:20px; justify-content:center; }
 
@@ -37,4 +37,6 @@ body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahom
 
 .red-background { background-color:red; }
 
-.play-again { display:flex; flex-direction:column; align-items:center; width:90px; aspect-ratio:2/1; border:2px solid black; font-size:x-large;}
+.play-again { display:flex; flex-direction:column; align-items:center; }
+
+.play-again__button { width:auto; aspect-ratio:2/1; border:2px solid black; background:green; font-size:x-large;}
