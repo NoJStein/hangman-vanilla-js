@@ -259,6 +259,8 @@ function gameReset() {
     state.wrongGuessCount = 0;
 
     resetHangman();
+
+    setMessage("Choose a difficulty");
 }
 
 function showDifficulty() {
