@@ -61,7 +61,7 @@ function chooseDifficulty(div) {
     return myDifficulty;  
 }
 
-function clearHangman(guessBox) {
+function clearGuessBox(guessBox) {
     // This clears the previous word from the guessBox element, child by child
     while (guessBox.firstChild) {
         guessBox.removeChild(guessBox.firstChild);
@@ -76,7 +76,7 @@ function startHangman(myWord) {
         if (guessBox === undefined) { return; }
 
         // Clears the previous word
-        clearHangman(guessBox);
+        clearGuessBox(guessBox);
 
         myWord.split('').forEach(letter => {
             const newDOMNode = document.createElement('div');
