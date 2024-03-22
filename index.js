@@ -279,6 +279,16 @@ function resetHangman () {
     })
 
     setHead("😟");
+// Trying to have only one active timeout event, this doesn't work as intended yet.
+function timeoutManager(activeTimeouts) {
+    if (activeTimeouts.length > 0) {
+        activeTimeouts.pop();
+    }
+    activeTimeouts.push(setTimeout(() => {
+        setHead("😴");
+        console.log("timeout test");        //Test
+    }, 10000));
+    console.log(activeTimeouts);        //Tests
 }
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
@@ -290,7 +300,10 @@ function init() {
     const difficulties = document.querySelectorAll('.difficulty');
     loadLetters();
     const letterButtons = document.querySelectorAll('.letter');
-    timeout;
+    let activeTimeouts = [];
+
+
+
 
     difficulties.forEach(div => {
         div.addEventListener('click', () => {         
