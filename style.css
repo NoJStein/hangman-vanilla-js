@@ -1,7 +1,7 @@
 
 body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:x-large; display:flex; flex-direction:column;}
 
-.guess-box { /*background-color:lime;*/ display:flex; gap:20px; padding:20px; justify-content:center; }
+.guess-box { display:flex; gap:20px; padding:20px; justify-content:center; }
 
 .letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; align-items:center; justify-content:center; display:flex; color:black;}
 

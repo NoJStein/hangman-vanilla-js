@@ -98,7 +98,7 @@ function loadLetters() {
     clearLetters(letterSelector);
     state.remainingLetters.slice(0, 26).forEach(letter => {
         const newDOMNode = document.createElement('button');
-        newDOMNode.classList.add('letter', 'hidden');
+        newDOMNode.classList.add('letter', 'hidden', 'js-target');
         newDOMNode.dataset.value = letter;
         newDOMNode.textContent = letter.toUpperCase();
         letterSelector.appendChild(newDOMNode);
@@ -277,8 +277,9 @@ function resetHangman () {
     hangman.forEach(part => {
         part.classList.add('hidden');
     })
-
     setHead("😟");
+}
+
 // Trying to have only one active timeout event, this doesn't work as intended yet.
 function timeoutManager(activeTimeouts) {
     if (activeTimeouts.length > 0) {
@@ -290,6 +291,7 @@ function timeoutManager(activeTimeouts) {
     }, 10000));
     console.log(activeTimeouts);        //Tests
 }
+
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
 // Two variables hold two categories of HTML elements "difficulty" and "letter"
