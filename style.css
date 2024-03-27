@@ -1,13 +1,15 @@
 
-body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:x-large; display:flex; flex-direction:column;}
+body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahoma, sans-serif; display:flex; flex-direction:column;}
+
+button { font-size:x-large; border:2px solid black;}
 
 .guess-box { display:flex; gap:20px; padding:20px; justify-content:center; }
 
-.letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; align-items:center; justify-content:center; display:flex; color:black;}
+.letter-box { width:50px; aspect-ratio:1/1; background-color:goldenrod; align-items:center; justify-content:center; display:flex; color:black; font-size:x-large;}
 
 .difficulty-selector { display:flex; gap:30px; padding:30px; justify-content:center; color:black }
 
-.difficulty { width:90px; aspect-ratio:2/1; border:2px solid black; font-size:x-large; display:flex; justify-content: center; align-items: center; }
+.difficulty { width:90px; aspect-ratio:2/1; display:flex; justify-content: center; align-items: center; }
 
 .difficulty--easy { background-color: green; }
 
@@ -17,11 +19,11 @@ body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahom
 
 .text-message { font-size:xx-large; display:flex; justify-content:center;  }
 
-.letter-selector { padding:20px; display:flex; justify-content:center; flex-wrap:wrap; margin-left:25%; margin-right:25%; }
+.letter-selector { padding:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; max-width:33%; margin-left:auto; margin-right:auto; }
 
 .letter-selector--row { display:flex; justify-content:center; }
 
-.letter { width:45px; aspect-ratio:1/1; border:2px solid black; font-size:x-large; }
+.letter { width:45px; aspect-ratio:1/1; }
 
 .hidden { visibility:hidden; padding:0px; gap:0px}
 
@@ -39,4 +41,8 @@ body { color:white; background-color:#232323; font-family:Verdana, Geneva, Tahom
 
 .play-again { display:flex; flex-direction:column; align-items:center; }
 
-.play-again__button { width:auto; aspect-ratio:2/1; border:2px solid black; background:green; font-size:x-large;}
+.play-again__button { width:auto; aspect-ratio:2/1; background:green; }
+
+@media screen and (max-width:500px) {
+    .letter-selector { max-width:unset; }
+}
