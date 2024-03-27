@@ -28,6 +28,12 @@
 // Difficulties.Easy or Difficulties.Hard (for example).
 // I could return it as a string which wouldn't have worked for when I used the return value
 // as an argument for chooseWord
+
+const IDLE_HEADS = ['😴', '🙄', '😤'];
+const CORRECT_HEADS = ['😄', '👀'];
+const WRONG_HEADS = ['😱', '😟']
+
+
 const Difficulties = {
     Easy: 'easy',
     Normal: 'normal',
@@ -41,6 +47,7 @@ const state = {
     // I don't think I need to use this anymore because I'm just disabling the letter buttons on the DOM to keep track of my remaining letters
     remainingLetters : ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'], // A list of available letters to guess
     difficulty : 0, // Effects the length of words to guess
+    idleTimer: '',
 };
 
 
@@ -159,7 +166,6 @@ function updateGuessBoard(myLetter) {
         }
     }
 
-    //console.log("Adding ", indexArr.length, " to state.correctGuessCount");     //Test
     state.correctGuessCount += indexArr.length;
 
     while (indexArr.length !== 0) {
@@ -170,9 +176,6 @@ function updateGuessBoard(myLetter) {
 // If you are out of guesses, then run gameOver
 // Else, draw the next part of the hangman
 function drawHangman() {
-    if (state.wrongGuessCount > 5) {
-        gameOver();
-    }
     let hangman = document.querySelectorAll('.hangman__part');
     hangman[state.wrongGuessCount - 1].classList.remove('hidden');
 }
@@ -188,10 +191,11 @@ function gameOver() {
         button.disabled = true;
     })
 
+    clearTimeout(state.idleTimer);
     setMessage("GAME OVER");
-    setHead("💀");
     gameOverFillBoard();
     playAgain();
+    setHead("💀");
 }
 
 function setMessage(message) {
@@ -229,7 +233,7 @@ function victory() {
     letterButtons.forEach(button => {
         button.disabled = true;
     })
-
+    clearTimeout(state.idleTimer);
     setMessage("VICTORY");
     setHead("🥳");
     playAgain()
@@ -241,7 +245,6 @@ function playAgain() {
     playAgainButton.classList.remove('hidden');
 
         playAgainButton.addEventListener('click', () => {
-            console.log("button pressed");      //Test
             playAgainButton.classList.add('hidden');
             gameReset();
             init();
@@ -278,19 +281,27 @@ function resetHangman () {
         part.classList.add('hidden');
     })
     setHead("😟");
+
+    
 }
 
-// Trying to have only one active timeout event, this doesn't work as intended yet.
-function timeoutManager(activeTimeouts) {
-    if (activeTimeouts.length > 0) {
-        activeTimeouts.pop();
-    }
-    activeTimeouts.push(setTimeout(() => {
-        setHead("😴");
-        console.log("timeout test");        //Test
-    }, 10000));
-    console.log(activeTimeouts);        //Tests
+function chooseHead(heads) {
+    let index = Math.floor(Math.random() * heads.length);
+    return heads[index];
 }
+
+function resetIdleHeadTimer(clear=true) {
+
+    if (clear) {
+        clearTimeout(state.idleTimer);
+    }
+    state.idleTimer = setTimeout(() => {
+        const head = chooseHead(IDLE_HEADS);
+        setHead(head);
+    }, 15000);
+}
+
+
 
 
 // This is my main function it links everything together, so hopefully it doesn't get too large
@@ -311,12 +322,12 @@ function init() {
         div.addEventListener('click', () => {         
             state.difficulty = chooseDifficulty(div);
             state.target = chooseWord(state.difficulty, wordBank);
-            console.log(state.target);      //Test
             startHangman(state.target);
             displayLetters();
             hideDifficulty();
             gameStartText();
 
+            resetIdleHeadTimer(false);
         })
     })   
 
@@ -327,13 +338,26 @@ function init() {
             if(checkLetter(myLetter)) {
                 button.classList.add('letter-box__correct');
                 updateGuessBoard(myLetter);
+                const head = chooseHead(CORRECT_HEADS);
+                setHead(head);
+                resetIdleHeadTimer();
+
             } else {
                 state.wrongGuessCount++;
                 drawHangman();
+                if (state.wrongGuessCount > 5) {
+                    gameOver();
+                } else {
+                    const head = chooseHead(WRONG_HEADS);
+                    setHead(head);
+                    resetIdleHeadTimer();
+                }
+
             }
 
+
+
             if (winCheck()) {
-                console.log("VICTORY");     //Test
                 victory();
             }
         })
@@ -350,7 +374,7 @@ function init() {
 
 // setTimeout creates a timer object
 let timeout = setTimeout(() => {
-    console.log('im finally here!')
+
 }, 5000);
 clearTimeout(timeout);
 
